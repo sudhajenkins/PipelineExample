@@ -29,4 +29,64 @@
 	<build>
 		<finalName>BankExample</finalName>
 	</build>
+	<profiles>
+        <profile>
+            <id>deploy to weblogic</id>
+            <activation>
+                <property>
+                    <name>deploy.to.weblogic</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.oracle.weblogic</groupId>
+                        <artifactId>weblogic-maven-plugin</artifactId>
+                        <version>10.3.4</version>
+                        <configuration>
+                            <adminurl>t3://${wl.host}:${wl.port}</adminurl>
+                            <targets>${wl.targets}</targets>
+                            <user>${wl.user}</user>
+                            <password>${wl.pass}</password>
+                            <upload>true</upload>
+                            <remote>true</remote>
+                            <verbose>true</verbose>
+                            <name>BankExample</name>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>deploy latest build</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>deploy</goal>
+                                </goals>
+                                <configuration>
+                                    <action>deploy</action>
+                                    <source>*/*.war</source>
+									<!--<source>C:/jenkins_installpath/workspace/Bank_appl1/target/BankExample.war    ./${wl.location}/${project.artifactId}</source>-->
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>package for weblogic</id>
+            <activation>
+                <property>
+                    <name>package.for.weblogic</name>
+                </property>
+            </activation>
+        </profile>
+    </profiles>
+  
+  <properties>
+      <wl.host>localhost</wl.host>
+      <wl.port>9001</wl.port>
+      <wl.targets>AdminServer</wl.targets>
+      <wl.location>AdminServer</wl.location>
+      <wl.user>weblogic</wl.user>
+      <wl.pass>weblogic123</wl.pass>
+  </properties>
 </project>
