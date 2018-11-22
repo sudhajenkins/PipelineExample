@@ -11,15 +11,20 @@ node('master') {
     {
       bat 'mvn test'
     }
-   stage('packaging?')
-    {
-       input 'Proceed to packaging?'
-    }
+   
    
     stage('Packaging')
     {
         bat 'mvn install'
     }
+   stage('Deploy?')
+    {
+       input 'Proceed to Deploy?'
+    }
+   stage('Deploy')
+   {
+      bat 'mvn package -Ddeploy.to.weblogic -Ddeploy.for.weblogic'
+   }
     /*stage('Deploy')
     {
         
