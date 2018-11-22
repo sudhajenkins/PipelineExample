@@ -62,7 +62,7 @@
                                 </goals>
                                 <configuration>
                                     <action>deploy</action>
-                                    <source>*/*.war</source>
+                                    <source>./${wl.location}/${project.artifactId}.war</source>
 									<!--<source>C:/jenkins_installpath/workspace/Bank_appl1/target/BankExample.war    ./${wl.location}/${project.artifactId}</source>-->
                                 </configuration>
                             </execution>
@@ -85,7 +85,7 @@
       <wl.host>localhost</wl.host>
       <wl.port>9001</wl.port>
       <wl.targets>AdminServer</wl.targets>
-      <wl.location>AdminServer</wl.location>
+      <wl.location>target</wl.location>
       <wl.user>weblogic</wl.user>
       <wl.pass>weblogic123</wl.pass>
   </properties>
