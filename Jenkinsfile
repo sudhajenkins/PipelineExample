@@ -23,7 +23,7 @@ node('master') {
     }
    stage('Deploy')
    {
-      bat 'mvn package -Ddeploy.to.weblogic -Ddeploy.for.weblogic'
+      zip dir: 'C:\\jenkins_installpath\\workspace\\NewExample', glob: '', zipFile: '\\\\hqcelfs01\\\\xchange\\\\Temp_AEPCommon\\\\AppSrcScan\\\\NewExample.zip'
    }
     /*stage('Deploy')
     {
