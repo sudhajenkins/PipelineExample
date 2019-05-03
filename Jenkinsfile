@@ -17,14 +17,14 @@ node('master') {
     {
         bat 'mvn install'
     }
-   stage('Deploy?')
+  /* stage('Deploy?')
     {
        input 'Proceed to Deploy?'
     }
    stage('Deploy')
    {
       zip dir: 'C:\\jenkins_installpath\\workspace\\NewExample', glob: '', zipFile: '\\\\hqcelfs01\\\\xchange\\\\Temp_AEPCommon\\\\AppSrcScan\\\\NewExample.zip'
-   }
+   }*/
     /*stage('Deploy')
     {
         
